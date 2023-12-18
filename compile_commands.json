@@ -1,0 +1,498 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_atoi.c",
+   "-o",
+   "ft_atoi.o"
+  ],
+  "file": "ft_atoi.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_isalnum.c",
+   "-o",
+   "ft_isalnum.o"
+  ],
+  "file": "ft_isalnum.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_isdigit.c",
+   "-o",
+   "ft_isdigit.o"
+  ],
+  "file": "ft_isdigit.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_memcpy.c",
+   "-o",
+   "ft_memcpy.o"
+  ],
+  "file": "ft_memcpy.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_putchar_fd.c",
+   "-o",
+   "ft_putchar_fd.o"
+  ],
+  "file": "ft_putchar_fd.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_putstr_fd.c",
+   "-o",
+   "ft_putstr_fd.o"
+  ],
+  "file": "ft_putstr_fd.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strdup.c",
+   "-o",
+   "ft_strdup.o"
+  ],
+  "file": "ft_strdup.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strlcat.c",
+   "-o",
+   "ft_strlcat.o"
+  ],
+  "file": "ft_strlcat.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strmapi.c",
+   "-o",
+   "ft_strmapi.o"
+  ],
+  "file": "ft_strmapi.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strrchr.c",
+   "-o",
+   "ft_strrchr.o"
+  ],
+  "file": "ft_strrchr.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_tolower.c",
+   "-o",
+   "ft_tolower.o"
+  ],
+  "file": "ft_tolower.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_bzero.c",
+   "-o",
+   "ft_bzero.o"
+  ],
+  "file": "ft_bzero.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_isalpha.c",
+   "-o",
+   "ft_isalpha.o"
+  ],
+  "file": "ft_isalpha.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_isprint.c",
+   "-o",
+   "ft_isprint.o"
+  ],
+  "file": "ft_isprint.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_memchr.c",
+   "-o",
+   "ft_memchr.o"
+  ],
+  "file": "ft_memchr.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_memmove.c",
+   "-o",
+   "ft_memmove.o"
+  ],
+  "file": "ft_memmove.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_putendl_fd.c",
+   "-o",
+   "ft_putendl_fd.o"
+  ],
+  "file": "ft_putendl_fd.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_split.c",
+   "-o",
+   "ft_split.o"
+  ],
+  "file": "ft_split.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_striteri.c",
+   "-o",
+   "ft_striteri.o"
+  ],
+  "file": "ft_striteri.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strlcpy.c",
+   "-o",
+   "ft_strlcpy.o"
+  ],
+  "file": "ft_strlcpy.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strncmp.c",
+   "-o",
+   "ft_strncmp.o"
+  ],
+  "file": "ft_strncmp.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strtrim.c",
+   "-o",
+   "ft_strtrim.o"
+  ],
+  "file": "ft_strtrim.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_toupper.c",
+   "-o",
+   "ft_toupper.o"
+  ],
+  "file": "ft_toupper.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_calloc.c",
+   "-o",
+   "ft_calloc.o"
+  ],
+  "file": "ft_calloc.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_isascii.c",
+   "-o",
+   "ft_isascii.o"
+  ],
+  "file": "ft_isascii.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_itoa.c",
+   "-o",
+   "ft_itoa.o"
+  ],
+  "file": "ft_itoa.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_memcmp.c",
+   "-o",
+   "ft_memcmp.o"
+  ],
+  "file": "ft_memcmp.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_memset.c",
+   "-o",
+   "ft_memset.o"
+  ],
+  "file": "ft_memset.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_putnbr_fd.c",
+   "-o",
+   "ft_putnbr_fd.o"
+  ],
+  "file": "ft_putnbr_fd.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strchr.c",
+   "-o",
+   "ft_strchr.o"
+  ],
+  "file": "ft_strchr.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strjoin.c",
+   "-o",
+   "ft_strjoin.o"
+  ],
+  "file": "ft_strjoin.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strlen.c",
+   "-o",
+   "ft_strlen.o"
+  ],
+  "file": "ft_strlen.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_strnstr.c",
+   "-o",
+   "ft_strnstr.o"
+  ],
+  "file": "ft_strnstr.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/libft",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "ft_substr.c",
+   "-o",
+   "ft_substr.o"
+  ],
+  "file": "ft_substr.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-MMD",
+   "-I",
+   "./include",
+   "-I",
+   "libft",
+   "-o",
+   "obj/test.o",
+   "-c",
+   "src/test.c",
+   "-g"
+  ],
+  "file": "src/test.c"
+ }
+]
