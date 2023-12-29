@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2023/12/22 20:43:37 by babonnet         ###   ########.fr       */
+/*   Updated: 2023/12/29 21:42:28 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,25 @@ void free_cmd(t_cmd *cmd, int size)
 		i++;
 	}
 	free(cmd);
+}
+
+void manage_pipe(int fd[2][2], int i)
+{
+	if (i == 0)
+		dup2(fd[0][1], STDOUT_FILENO);
+	if (i % 2 == 0)
+	{
+
+	}
+	else
+	{
+		//
+	}
+	close(fd[0][0]);
+	close(fd[0][1]);
+	close(fd[1][0]);
+	close(fd[1][1]);
+		
 }
 
 int pipex(t_cmd *cmd, int *pid, int fd[2][2], int size)

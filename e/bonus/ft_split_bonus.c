@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fparis <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:10:00 by fparis            #+#    #+#             */
-/*   Updated: 2023/12/19 19:02:42 by fparis           ###   ########.fr       */
+/*   Updated: 2023/12/20 20:05:52 by fparis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 static char	**gen_tab(char *str, char charsep)
 {
@@ -63,6 +63,8 @@ void	*free_tab(char **tab, int n)
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return (NULL);
 	while (i < n || (n == 0 && tab[i] != NULL))
 	{
 		free(tab[i]);

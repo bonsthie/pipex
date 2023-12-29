@@ -1,0 +1,114 @@
+[
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "mandatory/check_args.c",
+   "-o",
+   "mandatory/check_args.o",
+   "-I",
+   "headers"
+  ],
+  "file": "mandatory/check_args.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "mandatory/ft_split.c",
+   "-o",
+   "mandatory/ft_split.o",
+   "-I",
+   "headers"
+  ],
+  "file": "mandatory/ft_split.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "mandatory/ft_utils.c",
+   "-o",
+   "mandatory/ft_utils.o",
+   "-I",
+   "headers"
+  ],
+  "file": "mandatory/ft_utils.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "mandatory/here_doc.c",
+   "-o",
+   "mandatory/here_doc.o",
+   "-I",
+   "headers"
+  ],
+  "file": "mandatory/here_doc.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "mandatory/main.c",
+   "-o",
+   "mandatory/main.o",
+   "-I",
+   "headers"
+  ],
+  "file": "mandatory/main.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "gnl/get_next_line.c",
+   "-o",
+   "gnl/get_next_line.o",
+   "-I",
+   "headers"
+  ],
+  "file": "gnl/get_next_line.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/e",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "gnl/get_next_line_utils.c",
+   "-o",
+   "gnl/get_next_line_utils.o",
+   "-I",
+   "headers"
+  ],
+  "file": "gnl/get_next_line_utils.c"
+ }
+]

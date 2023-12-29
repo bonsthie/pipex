@@ -6,7 +6,7 @@
 /*   By: fparis <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 20:01:07 by fparis            #+#    #+#             */
-/*   Updated: 2023/12/20 00:23:50 by fparis           ###   ########.fr       */
+/*   Updated: 2023/12/20 18:51:59 by fparis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	***make_args_tab(int argc, char **argv)
 		args[i] = ft_split(argv[i + (argc - nb_args - 1)], ' ');
 		if (args[i] == NULL)
 		{
-			free_args(args);
+			free_args(args, 0);
 			return (NULL);
 		}
 		i++;
@@ -102,7 +102,7 @@ static int	put_path(char **arg, char **paths, char ***to_free)
 		if (!test)
 		{
 			free_tab(paths, 0);
-			free_args(to_free);
+			free_args(to_free, 0);
 			exit(1);
 		}
 		if (access(test, F_OK | X_OK) == 0)
@@ -136,8 +136,9 @@ char	***check_args(int argc, char **argv, char **envp)
 		if (!put_path(args[i], paths, args)
 			&& access(args[i][0], F_OK | X_OK) == -1)
 		{
-			free_tab(paths, 0);
-			ft_error(args[i][0], args, -1, -1);
+			cmd_not_found(args[i][0]);
+			free_tab(args[0], 0);
+			args[0] = NULL;
 		}
 		i++;
 	}

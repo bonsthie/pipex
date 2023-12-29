@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fparis <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:50:39 by fparis            #+#    #+#             */
-/*   Updated: 2023/12/20 17:48:22 by fparis           ###   ########.fr       */
+/*   Updated: 2023/12/20 20:06:00 by fparis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	ft_strlen(char *str)
 {
@@ -57,7 +57,7 @@ void	ft_error(char *func_err, char ***to_free, int to_close, int to_close2)
 {
 	perror(func_err);
 	if (to_free)
-		free_args(to_free);
+		free_args(to_free, 0);
 	if (to_close >= 0)
 		close(to_close);
 	if (to_close2 >= 0)
@@ -65,22 +65,25 @@ void	ft_error(char *func_err, char ***to_free, int to_close, int to_close2)
 	exit(1);
 }
 
-void	free_args(char ***args)
+void	*free_args(char ***args, int skip)
 {
 	int	i;
 
-	i = 0;
+	i = skip;
+	if (!args)
+		return (NULL);
 	while (args[i])
 	{
 		free_tab(args[i], 0);
 		i++;
 	}
 	free(args);
+	return (NULL);
 }
 
 void	cmd_not_found(char *cmd)
 {
-	put_str("zsh: command not found:", 1);
+	put_str("zsh: command not found: ", 1);
 	put_str(cmd, 1);
 	put_str("\n", 1);
 }
