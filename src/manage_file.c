@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   manage_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 12:09:08 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/01 19:38:07 by babonnet         ###   ########.fr       */
+/*   Created: 2024/01/01 19:37:15 by babonnet          #+#    #+#             */
+/*   Updated: 2024/01/01 21:17:17 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
+#include "libft.h"
+#include <fcntl.h>
+#include <unistd.h>
 
-typedef struct s_cmd
+int manage_file(int ac, char **av, t_data *data)
 {
-	char	*cmd;
-	char	**parameter;
-	int		infile;
-	int		outfile;
-}			t_cmd;
+	int infile;
+	int size;
 
-typedef struct s_data
-{
-	t_cmd	*cmd;
-	char	**env;
-	int		size;
-	int		outfile;
-}			t_data;
-
-void		*free_cmd(t_cmd *cmd, int size);
-t_cmd		*parsing_cmd(char **av, int ac);
-int manage_file(int ac, char **av, t_data *data);
-
-#endif
+	size = ac - 3;
+	infile = open(av[1], O_RDONLY);
+	data->outfile = open(av[ac - 1], O_WRONLY);
+	if (infile < 0 || data->outfile < 0)
+		return (0);
+	dup2(infile, STDIN_FILENO);
+	close(infile);
+	return (size);
+}

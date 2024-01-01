@@ -6,82 +6,23 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2023/12/31 01:13:15 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/01 19:37:03 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "pipex.h"
-#include <errno.h>
-#include <stdio.h>
 # include <fcntl.h>
+# include <stdio.h>
 #include <sys/wait.h>
-#include <unistd.h>
 
-t_cmd *parsing_cmd(char **av, int ac, int fd[2][2])
+void close_pipe(int fd[2])
 {
-	t_cmd *cmd;
-	int		i;
-
-	cmd = ft_calloc(ac - 2, sizeof(t_cmd));
-	if (!cmd)
-		return (NULL);
-	i = 0;
-	while (i < ac -3)
-	{
-		cmd[i].parameter = ft_split(av[i + 2], ' ');
-		// error free all
-		cmd[i].cmd = ft_strjoin("/usr/bin/", cmd[i].parameter[0]);
-		// error free all
-		i++;
-	}
-	//verif if all function exist
-	(void)fd;
-	return (cmd);
-
+	close(fd[0]);
+	close(fd[1]);
 }
 
-void print_cmd(t_cmd *cmd, int size)
-{
-	int i = 0;
-	int j;
-
-	while (i < size)
-	{
-		printf("%s\n", cmd[i].cmd);
-		j = 0;
-		while (cmd[i].parameter[j] != NULL)
-		{
-			printf("--\"%s\"\n", cmd[i].parameter[j]);
-			j++;
-		}
-		i++;
-	}
-}
-
-void free_cmd(t_cmd *cmd, int size)
-{
-	int i = 0;
-	int j;
-
-	while (i < size)
-	{
-		free(cmd[i].cmd);
-		j = 0;
-		while (cmd[i].parameter[j] != NULL)
-		{
-			free(cmd[i].parameter[j]);
-			j++;
-		}
-		free(cmd[i].parameter);
-		i++;
-	}
-	free(cmd);
-}
-
-int outfile;
-
-void manage_pipe(int fd[2][2], int i, int size)
+void manage_pipe(int fd[2][2], int i, int size, int outfile)
 {
 	if (i == 0)
 		dup2(fd[0][1], STDOUT_FILENO);
@@ -95,76 +36,74 @@ void manage_pipe(int fd[2][2], int i, int size)
 		dup2(fd[(i + 1) % 2][0], STDIN_FILENO);
 		dup2(fd[i % 2][1], STDOUT_FILENO);
 	}
-	close(fd[0][0]);
-	close(fd[0][1]);
-	close(fd[1][0]);
-	close(fd[1][1]);
+	close_pipe(fd[0]);
+	close_pipe(fd[1]);
 }
 
-void pipex(t_cmd *cmd, int *pid, int fd[2][2], int size, char **env)
+void wait_multiple_pid(int *pid, int size)
 {
 	int i;
-	int j;
 
 	i = 0;
 	while (i < size)
 	{
-		if (i == 0)
-			pipe(fd[0]);
-		else if (i < size - 1)
-			pipe(fd[i % 2]);
+		waitpid(pid[i], NULL, 0);
+		i++;
+	}
+}
+
+void pipex(t_data data, int *pid, int fd[2][2])
+{
+	int i;
+
+	i = 0;
+	while (i < data.size)
+	{
+		if (pipe(fd[i % 2]) == -1)
+		{
+			perror("Error [pipe fail]\n");
+			return ;
+		}
 		pid[i] = fork();
 		if (pid[i] == 0)
 		{
-			manage_pipe(fd, i, size);
-
-			execve(cmd[i].cmd, cmd[i].parameter, env);
-			write(2, "Error\n", 6);
+			manage_pipe(fd, i, data.size, data.outfile);
+			execve(data.cmd[i].cmd, data.cmd[i].parameter, data.env);
+			perror("Error [execve fail]\n");
+			return ;
 		}
 		if (i != 0)
-		{
-			close(fd[(i + 1) % 2][0]);
-			close(fd[(i + 1) % 2][1]);
-		}
+			close_pipe(fd[(i + 1) % 2]);
 		i++;
 	}
-	close(fd[i % 2][0]);
-	close(fd[i % 2][1]);
-	j = 0;
-	while (j++ < size)
-	{
-		//printf("test\n");
-		waitpid(pid[j], NULL, 0);
-		j++;
-	}
-
+	close_pipe(fd[i % 2]);
+	wait_multiple_pid(pid, data.size);
 }
-
 
 int	main(int ac, char **av, char **env)
 {
-	t_cmd	*cmd;
+	t_data	data;
 	int		fd[2][2];
 	int		*pid;
-	int		infile;
-	//int		outfile;
 
-	infile = open(av[1], O_RDONLY);
-	outfile = open(av[ac - 1], O_WRONLY);
-	if (infile < 0 || outfile < 0)
-		return (0);
-	//char test[30];
-	dup2(infile, STDIN_FILENO);
-	//read(STDIN_FILENO, test, 30);
-	//printf("%s\n", test);
-
-	close(infile);
-	pid = ft_calloc(ac - 3, sizeof(int));
+	if (ac < 5)
+	{
+		perror("Error [too few arguments]");
+		return 1;
+	}
+	data.size = manage_file(ac, av, &data);
+	if (data.size == 0)
+		return (1);
+	pid = ft_calloc(data.size, sizeof(int));
 	if (!pid)
 		return (1);
-	cmd = parsing_cmd(av, ac, fd);
-	//print_cmd(cmd , ac - 3);
-	pipex(cmd, pid, fd, ac - 3, env);
-	free_cmd(cmd, ac - 3);
+	data.env = env;
+	data.cmd = parsing_cmd(av, ac);
+	if (data.cmd != NULL)
+	{
+		pipex(data, pid, fd);
+		free_cmd(data.cmd, data.size);
+	}
 	free(pid);
+	return (0);
 }
