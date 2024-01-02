@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/01 19:37:03 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:24:01 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void manage_pipe(int fd[2][2], int i, int size, int outfile)
 	{
 		dup2(fd[(i + 1) % 2][0], STDIN_FILENO);
 		dup2(outfile, STDOUT_FILENO);
+		close(outfile);
 	}
 	else
 	{
