@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:59:17 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/01 21:19:27 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:21:04 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "pipex.h"
-#include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
 
 void	*free_cmd(t_cmd *cmd, int size)
 {
@@ -37,46 +35,15 @@ void	*free_cmd(t_cmd *cmd, int size)
 	return (NULL);
 }
 
-char	*find_cmd(char *cmd)
+void	free_str_tab(char **tab)
 {
-	char	*cmd_path;
+	int	i;
 
-	cmd_path = ft_strdup(cmd);
-	if (access(cmd_path, X_OK) != -1)
-		return (cmd_path);
-	free(cmd_path);
-	cmd_path = ft_strjoin("/usr/bin/", cmd);
-	if (access(cmd_path, X_OK) != -1)
-		return (cmd_path);
-	free(cmd_path);
-	cmd_path = ft_strjoin("/bin/", cmd);
-	if (access(cmd_path, X_OK) != -1)
-		return (cmd_path);
-	free(cmd_path);
-	return (NULL);
-}
-
-t_cmd	*parsing_cmd(char **av, int ac)
-{
-	t_cmd	*cmd;
-	int		i;
-
-	cmd = ft_calloc(ac - 2, sizeof(t_cmd));
-	if (!cmd)
-		return (NULL);
 	i = 0;
-	while (i < ac - 3)
+	while (tab[i])
 	{
-		cmd[i].parameter = ft_split(av[i + 2], ' ');
-		if (cmd[i].parameter == NULL)
-			return (free_cmd(cmd, i));
-		cmd[i].cmd = find_cmd(cmd[i].parameter[0]);
-		if (cmd[i].cmd == NULL)
-		{
-			perror("Error [Command doesn't exist]");
-			return (free_cmd(cmd, i));
-		}
+		free(tab[i]);
 		i++;
 	}
-	return (cmd);
+	free(tab);
 }
