@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/04 19:18:53 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:09:27 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ int	main(int ac, char **av, char **env)
 		ft_putstr_fd("Error [too few arguments]", 2);
 		return (1);
 	}
+	if (!env)
+	{
+		ft_putstr_fd("Error [env is empty]", 2);
+		return (1);
+	}
+		return (1);
 	data.size = manage_file(ac, av, &data);
 	if (data.size == 0)
 		return (1);
