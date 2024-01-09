@@ -6,15 +6,16 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 19:13:09 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 01:08:40 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:15:40 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "pipex.h"
+#include <stdio.h>
 #include <unistd.h>
 
-char	*find_cmd(char *cmd, char **path)
+static char	*find_cmd(char *cmd, char **path)
 {
 	int		i;
 	char	*tmp;
@@ -33,29 +34,7 @@ char	*find_cmd(char *cmd, char **path)
 	return (NULL);
 }
 
-char	*find_program_name(char *program)
-{
-	char	*name;
-
-	name = ft_strrchr(program, '/');
-	if (!name)
-		return (program);
-	return (name + 1);
-}
-
-static void	error_msg(char *program_name, char *cmd)
-{
-	char	*name;
-
-	name = find_program_name(program_name);
-	write(2, name, ft_strlen(name));
-	ft_putstr_fd(": command not found", 2);
-	write(2, ": ", 2);
-	write(2, cmd, ft_strlen(cmd));
-	write(2, "\n", 1);
-}
-
-char	**create_path(char **env)
+static char	**create_path(char **env)
 {
 	int		i;
 	char	*tmp;
@@ -102,8 +81,8 @@ t_cmd	*parsing_cmd(char **av, int ac, char **env)
 			cmd[i].cmd = find_cmd(cmd[i].parameter[0], path);
 		else
 			cmd[i].cmd = NULL;
-		if (cmd[i].cmd == NULL && cmd[i].parameter)
-			error_msg(av[0], cmd[i].parameter[0]);
+		if (cmd[i].cmd == NULL)
+			error_msg_cmd(av[0], cmd[i].parameter);
 		i++;
 	}
 	if (path)

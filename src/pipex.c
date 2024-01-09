@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 00:01:49 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:15:31 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <sys/wait.h>
 
-void	close_pipe(int fd[2])
+static void	close_pipe(int fd[2])
 {
 	if (fd[0] > 0)
 		close(fd[0]);
@@ -24,7 +24,7 @@ void	close_pipe(int fd[2])
 		close(fd[1]);
 }
 
-void	manage_pipe(int fd[2][2], int i, int size, int outfile)
+static void	manage_pipe(int fd[2][2], int i, int size, int outfile)
 {
 	if (i == 0)
 		dup2(fd[0][1], STDOUT_FILENO);
@@ -44,7 +44,7 @@ void	manage_pipe(int fd[2][2], int i, int size, int outfile)
 		close_pipe(fd[1]);
 }
 
-void	wait_multiple_pid(int *pid, int size)
+static void	wait_multiple_pid(int *pid, int size)
 {
 	int	i;
 
@@ -56,16 +56,16 @@ void	wait_multiple_pid(int *pid, int size)
 	}
 }
 
-void	pipex(t_data data, int *pid, int fd[2][2])
+static void	pipex(t_data data, int *pid, int fd[2][2])
 {
 	int	i;
 
-	i = 0;
-	while (i < data.size)
+	i = -1;
+	while (++i < data.size)
 	{
 		if (pipe(fd[i % 2]) == -1)
 		{
-			perror("Error [pipe fail]\n");
+			ft_putstr_fd("Error [pipe fail]\n", 2);
 			return ;
 		}
 		if (data.cmd[i].cmd)
@@ -80,7 +80,6 @@ void	pipex(t_data data, int *pid, int fd[2][2])
 		}
 		if (i != 0)
 			close_pipe(fd[(i + 1) % 2]);
-		i++;
 	}
 	close_pipe(fd[i % 2]);
 	wait_multiple_pid(pid, data.size);
@@ -89,27 +88,18 @@ void	pipex(t_data data, int *pid, int fd[2][2])
 int	main(int ac, char **av, char **env)
 {
 	t_data	data;
+	int		here_doc;
 	int		fd[2][2];
 	int		*pid;
 
-	if (ac < 5)
-	{
-		ft_putstr_fd("Error [too few arguments]", 2);
-		return (1);
-	}
-	if (!env)
-	{
-		ft_putstr_fd("Error [env is empty]", 2);
-		return (1);
-	}
-	data.size = manage_file(ac, av, &data);
-	if (data.size == 0)
+	data.env = env;
+	here_doc = parsing(&data, ac, av);
+	if (here_doc == 2)
 		return (1);
 	pid = ft_calloc(data.size, sizeof(int));
 	if (!pid)
 		return (1);
-	data.env = env;
-	data.cmd = parsing_cmd(av, ac, env);
+	data.cmd = parsing_cmd(&av[here_doc], ac - here_doc, env);
 	if (data.cmd != NULL)
 	{
 		pipex(data, pid, fd);

@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:09:08 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/04 19:18:23 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:12:38 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ typedef struct s_data
 void		*free_cmd(t_cmd *cmd, int size);
 void		free_str_tab(char **tab);
 
+void		error_msg_cmd(char *program_name, char **cmd);
+void		error_msg_file(char *program_name, char *cmd);
+
 t_cmd		*parsing_cmd(char **av, int ac, char **env);
-int			manage_file(int ac, char **av, t_data *data);
-char		*find_program_name(char *program);
+int			parsing(t_data *data, int ac, char **av);
 
 #endif
