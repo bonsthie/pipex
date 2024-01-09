@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 15:59:17 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/04 19:21:04 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/09 01:31:51 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ void	*free_cmd(t_cmd *cmd, int size)
 	i = 0;
 	while (i < size)
 	{
-		free(cmd[i].cmd);
+		if (cmd[i].cmd)
+			free(cmd[i].cmd);
 		j = 0;
-		while (cmd[i].parameter[j] != NULL)
+		if (cmd[i].parameter)
 		{
-			free(cmd[i].parameter[j]);
-			j++;
+			while (cmd[i].parameter[j] != NULL)
+			{
+				if (cmd[i].parameter[j])
+					free(cmd[i].parameter[j]);
+				j++;
+			}
+			if (cmd[i].parameter)
+				free(cmd[i].parameter);
 		}
-		free(cmd[i].parameter);
 		i++;
 	}
 	free(cmd);

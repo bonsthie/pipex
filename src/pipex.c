@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/08 16:09:27 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/09 00:01:49 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 
 void	close_pipe(int fd[2])
 {
-	close(fd[0]);
-	close(fd[1]);
+	if (fd[0] > 0)
+		close(fd[0]);
+	if (fd[1] > 0)
+		close(fd[1]);
 }
 
 void	manage_pipe(int fd[2][2], int i, int size, int outfile)
@@ -38,7 +40,8 @@ void	manage_pipe(int fd[2][2], int i, int size, int outfile)
 		dup2(fd[i % 2][1], STDOUT_FILENO);
 	}
 	close_pipe(fd[0]);
-	close_pipe(fd[1]);
+	if (i > 0)
+		close_pipe(fd[1]);
 }
 
 void	wait_multiple_pid(int *pid, int size)
@@ -65,12 +68,15 @@ void	pipex(t_data data, int *pid, int fd[2][2])
 			perror("Error [pipe fail]\n");
 			return ;
 		}
-		pid[i] = fork();
-		if (pid[i] == 0)
+		if (data.cmd[i].cmd)
 		{
-			manage_pipe(fd, i, data.size, data.outfile);
-			execve(data.cmd[i].cmd, data.cmd[i].parameter, data.env);
-			return ;
+			pid[i] = fork();
+			if (pid[i] == 0)
+			{
+				manage_pipe(fd, i, data.size, data.outfile);
+				execve(data.cmd[i].cmd, data.cmd[i].parameter, data.env);
+				return ;
+			}
 		}
 		if (i != 0)
 			close_pipe(fd[(i + 1) % 2]);
@@ -96,7 +102,6 @@ int	main(int ac, char **av, char **env)
 		ft_putstr_fd("Error [env is empty]", 2);
 		return (1);
 	}
-		return (1);
 	data.size = manage_file(ac, av, &data);
 	if (data.size == 0)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 19:13:09 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/04 19:18:13 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/09 01:08:40 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,11 @@ t_cmd	*parsing_cmd(char **av, int ac, char **env)
 	while (i < ac - 3)
 	{
 		cmd[i].parameter = ft_split(av[i + 2], ' ');
-		if (cmd[i].parameter == NULL)
-			return (free_cmd(cmd, i));
-		cmd[i].cmd = find_cmd(cmd[i].parameter[0], path);
-		if (cmd[i].cmd == NULL)
+		if (cmd[i].parameter)
+			cmd[i].cmd = find_cmd(cmd[i].parameter[0], path);
+		else
+			cmd[i].cmd = NULL;
+		if (cmd[i].cmd == NULL && cmd[i].parameter)
 			error_msg(av[0], cmd[i].parameter[0]);
 		i++;
 	}
