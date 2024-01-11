@@ -6,12 +6,15 @@ SRC_DIR = src
 SRC_DIR_BONUS = src_bonus
 OBJ_DIR = obj
 HSRCS = include
+LIBFT = libft/libft.a
 HSRCS_BONUS = include_bonus
 SRC = pipex.c \
 	  manage_file.c \
 	  find_cmd.c \
 	  free.c \
-	  error_msg.c
+	  error_msg.c \
+	  here_doc.c
+
 SRC_BONUS = $(SRC:%.c=%_bonus.c)
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
@@ -20,11 +23,12 @@ OBJS_BONUS = $(SRC_BONUS:%.c=$(OBJ_DIR)/%.o)
 RED = \033[0;31m
 GREEN = \033[0;32m
 YELLOW = \033[1;33m
-NC = \033[0m 
+PURPULE = \e[0;35m
+NC = \033[0m
 
 all: $(NAME)
 
-$(NAME): libft $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
 	@echo "$(GREEN)Linking $(NAME)...$(NC)"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a
 
@@ -42,9 +46,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR_BONUS)/%.c
 	@echo "$(YELLOW)Compiling $(notdir $<)...$(NC)"
 	@$(CC) $(CFLAGS) -I $(HSRCS_BONUS) -I libft/ -o $@ -c $< 
 
-libft:
-	@echo "$(YELLOW)Building libraries...$(NC)"
-	$(MAKE) -C libft
+$(LIBFT):
+	@echo "$(PURPULE)Building libraries...$(NC)"
+	@$(MAKE) -C libft -s
 
 clean:
 	@echo "$(RED)Cleaning object files...$(NC)"
@@ -52,12 +56,12 @@ clean:
 
 lclean:
 	@echo "$(RED)Cleaning libraries...$(NC)"
-	@$(MAKE) -C libft fclean
+	@$(MAKE) -C libft fclean -s
 
-fclean: clean 
+fclean: clean lclean 
 	@echo "$(RED)Cleaning executable $(NAME)...$(NC)"
 	@rm -f $(NAME)
 
 re : fclean all
 
-.PHONY: all clean fclean lclean re libft bonus
+.PHONY: all clean fclean lclean re bonus

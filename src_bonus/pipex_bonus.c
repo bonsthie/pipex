@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 21:15:31 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:32:11 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "pipex_bonus.h"
+#include "libft.h"
 #include <fcntl.h>
-#include <stdio.h>
 #include <sys/wait.h>
 
 static void	close_pipe(int fd[2])

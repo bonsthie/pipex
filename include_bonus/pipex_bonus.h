@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:09:08 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 21:12:38 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:29:29 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 typedef struct s_cmd
 {
@@ -31,6 +31,8 @@ typedef struct s_data
 
 void		*free_cmd(t_cmd *cmd, int size);
 void		free_str_tab(char **tab);
+
+void		manage_here_doc(int ac, char **av, t_data *data);
 
 void		error_msg_cmd(char *program_name, char **cmd);
 void		error_msg_file(char *program_name, char *cmd);

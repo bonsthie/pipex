@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_cmd.c                                         :+:      :+:    :+:   */
+/*   find_cmd_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 19:13:09 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 21:15:40 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:31:11 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "pipex_bonus.h"
-#include <stdio.h>
 #include <unistd.h>
 
 static char	*find_cmd(char *cmd, char **path)
