@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 19:13:09 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 21:15:40 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/12 01:48:47 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	**create_path(char **env)
 	return (path);
 }
 
-t_cmd	*parsing_cmd(char **av, int ac, char **env)
+t_cmd	*parsing_cmd(char **av, int ac, char **env, char *program_name)
 {
 	t_cmd	*cmd;
 	int		i;
@@ -82,7 +82,7 @@ t_cmd	*parsing_cmd(char **av, int ac, char **env)
 		else
 			cmd[i].cmd = NULL;
 		if (cmd[i].cmd == NULL)
-			error_msg_cmd(av[0], cmd[i].parameter);
+			error_msg_cmd(program_name, cmd[i].parameter);
 		i++;
 	}
 	if (path)

@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 21:02:09 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 21:13:43 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/12 03:12:21 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ void	error_msg_file(char *program_name, char *cmd)
 	ft_putstr_fd(": no such file or directory: ", 2);
 	write(2, cmd, ft_strlen(cmd));
 	write(2, "\n", 1);
+}
+
+void	error_msg_here_doc(char *program_name)
+{
+	char	*name;
+
+	name = find_program_name(program_name);
+	write(2, name, ft_strlen(name));
+	ft_putstr_fd(": Error : Here doc processing failed. ", 2);
+	ft_putstr_fd("File may be deleted or altered.\n", 2);
 }

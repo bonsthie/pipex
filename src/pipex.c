@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 16:48:38 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/09 21:15:31 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/12 01:48:23 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	main(int ac, char **av, char **env)
 	pid = ft_calloc(data.size, sizeof(int));
 	if (!pid)
 		return (1);
-	data.cmd = parsing_cmd(&av[here_doc], ac - here_doc, env);
+	data.cmd = parsing_cmd(&av[here_doc], ac - here_doc, env, av[0]);
 	if (data.cmd != NULL)
 	{
 		pipex(data, pid, fd);

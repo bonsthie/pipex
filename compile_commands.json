@@ -490,76 +490,6 @@
   "file": "ft_substr.c"
  },
  {
-  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/ft_printf",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-c",
-   "-o",
-   "ft_printf.o",
-   "ft_printf.c"
-  ],
-  "file": "ft_printf.c"
- },
- {
-  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/ft_printf",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-c",
-   "-o",
-   "print.o",
-   "print.c"
-  ],
-  "file": "print.c"
- },
- {
-  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/ft_printf",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-c",
-   "-o",
-   "ft_putstr_fd.o",
-   "ft_putstr_fd.c"
-  ],
-  "file": "ft_putstr_fd.c"
- },
- {
-  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/ft_printf",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-c",
-   "-o",
-   "ft_strlen.o",
-   "ft_strlen.c"
-  ],
-  "file": "ft_strlen.c"
- },
- {
-  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex/ft_printf",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-c",
-   "-o",
-   "ft_putchar_fd.o",
-   "ft_putchar_fd.c"
-  ],
-  "file": "ft_putchar_fd.c"
- },
- {
   "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
   "arguments": [
    "clang",
@@ -609,17 +539,104 @@
    "-Wextra",
    "-Werror",
    "-I",
-   "include",
+   "include_bonus",
    "-I",
-   "libft/.",
-   "-I",
-   "ft_printf/.",
+   "libft/",
    "-o",
-   "obj/pipex_utils.o",
+   "obj/pipex_bonus.o",
    "-c",
-   "src/pipex_utils.c",
-   "-g"
+   "src_bonus/pipex_bonus.c"
   ],
-  "file": "src/pipex_utils.c"
+  "file": "src_bonus/pipex_bonus.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include_bonus",
+   "-I",
+   "libft/",
+   "-o",
+   "obj/manage_file_bonus.o",
+   "-c",
+   "src_bonus/manage_file_bonus.c"
+  ],
+  "file": "src_bonus/manage_file_bonus.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include_bonus",
+   "-I",
+   "libft/",
+   "-o",
+   "obj/find_cmd_bonus.o",
+   "-c",
+   "src_bonus/find_cmd_bonus.c"
+  ],
+  "file": "src_bonus/find_cmd_bonus.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include_bonus",
+   "-I",
+   "libft/",
+   "-o",
+   "obj/free_bonus.o",
+   "-c",
+   "src_bonus/free_bonus.c"
+  ],
+  "file": "src_bonus/free_bonus.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include_bonus",
+   "-I",
+   "libft/",
+   "-o",
+   "obj/error_msg_bonus.o",
+   "-c",
+   "src_bonus/error_msg_bonus.c"
+  ],
+  "file": "src_bonus/error_msg_bonus.c"
+ },
+ {
+  "directory": "/nfs/homes/babonnet/Documents/pipex_project/pipex",
+  "arguments": [
+   "clang",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "include_bonus",
+   "-I",
+   "libft/",
+   "-o",
+   "obj/here_doc_bonus.o",
+   "-c",
+   "src_bonus/here_doc_bonus.c"
+  ],
+  "file": "src_bonus/here_doc_bonus.c"
  }
 ]

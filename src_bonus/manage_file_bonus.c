@@ -6,7 +6,7 @@
 /*   By: babonnet <babonnet@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 19:37:15 by babonnet          #+#    #+#             */
-/*   Updated: 2024/01/11 17:31:52 by babonnet         ###   ########.fr       */
+/*   Updated: 2024/01/12 03:17:57 by babonnet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	parsing(t_data *data, int ac, char **av)
 	}
 	if (!ft_strcmp(av[1], "here_doc"))
 	{
-		manage_here_doc(ac, av, data);
+		if (manage_here_doc(ac, av, data))
+			return (2);
 		return (1);
 	}
 	manage_file(ac, av, data);
